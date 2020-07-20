@@ -1,0 +1,26 @@
+GameModeInterface
+-> Stores types of GameModes
+
+GAME-MODES
+COOP: 2 Players only. They fight as team against Asteroids, accumulating a collective highscore. Friendly-fire is off.
+
+DEATHMATCH: Unlimited Players. Fight against eachother. Health Bar Higher Weapon cool down, Player-Player collision results in health decrease.
+Game
+-> running (private -> protected) to allow MultiplayerGame access
+->
+GameUpdater
+-> Implements GameModeInterface (It uses these in physics checks for certain parameters such as Player-Bullet collision, Player-Player Collision)
+
+GameObject
+-> multiplayerID added. This is a random int assigned to each gameobject so they can be tracked by all clients when toggling actions
+-> getType method added. This is utilised when determining if recieved packet is a certain type of GameObject
+-> mutliplayerID added in constructor using Random Object, the range is till 500 to keep the integer sizes as small as possible
+
+Spaceship
+-> SetGameMode added. This enables the spaceship to adjust parameters on game creation according to the current game mode
+-> Get/Setters for Username, Health and COOP Score.
+
+AsteroidsPanel
+-> COOPSCORE POSITION POINT variable added.
+-> Deathmatch Banner Position Point added
+-> Refactored the original code for cleaner print methods
